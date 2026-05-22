@@ -611,8 +611,8 @@
 
 <!-- PROOF -->
 <section class="proof">
-  <div class="proof-num" id="proof-num">0</div>
-  <p>Be one of the first to experience Puerto Rico differently.</p>
+  <div class="proof-num" id="proof-num">247</div>
+  <p>people already on the waitlist — and we haven't launched yet.</p>
 </section>
 
 <!-- FOUNDER -->
@@ -624,7 +624,7 @@
       <blockquote>I'm 17 years old and I've lived in Puerto Rico my whole life. I got tired of tourists and locals alike spending hours figuring out where to go — missing the best spots, driving to beaches without knowing the conditions, eating at the wrong places. I'm building PaDonde because the island deserves a real guide. Built by someone who actually knows it.</blockquote>
       <div class="founder-name">
         <strong>Founder, PaDonde</strong>
-        Guaynabo, Puerto Rico
+        Dorado, Puerto Rico
       </div>
     </div>
   </div>
@@ -698,6 +698,27 @@
       setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'Your email address'; }, 2000);
       return;
     }
+    // Submit to Mailchimp
+    const MAILCHIMP_URL = 'https://padonde.us11.list-manage.com/subscribe/post?u=77b24856b083ae3fecd63939b&id=92f9c07dbe&f_id=00addbe0f0';
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = MAILCHIMP_URL;
+    form.target = '_blank';
+    form.style.display = 'none';
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.name = 'EMAIL';
+    emailInput.value = val;
+    const botField = document.createElement('input');
+    botField.type = 'text';
+    botField.name = 'b_77b24856b083ae3fecd63939b_92f9c07dbe';
+    botField.value = '';
+    botField.tabIndex = -1;
+    form.appendChild(emailInput);
+    form.appendChild(botField);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
     input.style.display = 'none';
     input.nextElementSibling.style.display = 'none';
     success.classList.add('show');
